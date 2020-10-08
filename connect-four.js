@@ -1,4 +1,6 @@
 import Game from './game.js';
+import Column from './column.js';
+
 const player1 = document.getElementById('player-1-name');
 const player2 = document.getElementById('player-2-name');
 let game = undefined;
@@ -64,5 +66,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     };
     game.playInColumn();
     updateUI(event);
+    Column.add(game.currentPlayer)
   })
 })
