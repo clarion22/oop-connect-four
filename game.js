@@ -9,11 +9,12 @@ class Game {
     }
 
     playInColumn() {
-        if(this.currentPlayer % 2) {
+        if(this.currentPlayer === 2) {
             this.currentPlayer = 1;
         } else {
-            this.currentPlayer = 2; 
+            this.currentPlayer = 2;
         }
+        console.log(this.currentPlayer);
     }
 }
 export default Game;

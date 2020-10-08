@@ -4,9 +4,9 @@ const player2 = document.getElementById('player-2-name');
 let game = undefined;
 const board = document.getElementById('board-holder');
 const clickTarget = document.getElementById('click-targets');
-const clickTargetColumns = document.querySelectorAll('click-target')
+const clickTargetColumns = document.querySelectorAll('click-target');
 
-function updateUI() {
+function updateUI(event) {
     if (!game) {
         board.classList.add('is-invisible');
     }
@@ -17,9 +17,15 @@ function updateUI() {
   let currentPlayer = game.currentPlayer
 
   if (currentPlayer === 1) {
-    clickTarget.innerHTML = "<div class='token black'></div>"
+    clickTarget.classList.add('black');
+    clickTarget.classList.remove('red');
+    // document.getElementById(event.target.id).innerHTML = "<div class='token black'></div>";
+    // document.getElementById(event.target.id).innerHTML = "";
   } else {
-    clickTarget.innerHTML = "<div class='token red'></div>"
+      clickTarget.classList.add('red');
+      clickTarget.classList.remove('black');
+    // document.getElementById(event.target.id).innerHTML = "<div class='token red'></div>";
+    // document.getElementById(event.target.id).innerHTML = "";
   }
 
 
@@ -53,8 +59,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     updateUI();
   })
   clickTarget.addEventListener('click', event => {
+    if (!event.target.id.startsWith('column-')) {
+        return false;
+    };
     game.playInColumn();
-    updateUI();
-
+    updateUI(event);
   })
 })
