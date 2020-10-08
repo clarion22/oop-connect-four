@@ -17,8 +17,8 @@ class Column {
     }
   }
 
-  getTokenAt(){
-    
+  getTokenAt(rowNumber, colNumber=null){
+    return this.tokens[rowNumber]
   }
 }
 
