@@ -4,6 +4,7 @@ const player2 = document.getElementById('player-2-name');
 let game = undefined;
 const board = document.getElementById('board-holder');
 const clickTarget = document.getElementById('click-targets');
+const clickTargetColumns = document.querySelectorAll('click-target')
 
 function updateUI() {
     if (!game) {
@@ -12,8 +13,17 @@ function updateUI() {
     board.classList.remove('is-invisible');
     document
         .getElementById('game-name')
-        .innerHTML = game.getName();
-    
+      .innerHTML = game.getName();
+  let currentPlayer = game.currentPlayer
+
+  if (currentPlayer === 1) {
+    clickTarget.innerHTML = "<div class='token black'></div>"
+  } else {
+    clickTarget.innerHTML = "<div class='token red'></div>"
+  }
+
+
+
 }
 document.addEventListener('DOMContentLoaded', (event) => {
 
@@ -43,7 +53,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     updateUI();
   })
   clickTarget.addEventListener('click', event => {
-      game.playInColumn();
-      updateUI();
+    game.playInColumn();
+    updateUI();
+
   })
 })
