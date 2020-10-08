@@ -5,15 +5,23 @@ class Game {
         this.name1 = name1;
         this.name2 = name2;
         this.currentPlayer = 1;
-        this.columns = [];
+        this.columns = [new Column(),
+                        new Column(),
+                        new Column(),
+                        new Column(),
+                        new Column(),
+                        new Column(),
+                        new Column()]
 
-        for (let i = 0; i < 7; i++){
-                this.columns.push(new Column())
-        };
+
 
     }
     getName() {
         return `${this.name1} vs ${this.name2}`;
+    }
+
+    getTokenAt(rowIndex, columnIndex) {
+        return this.columns[columnIndex].getTokenAt(rowIndex);
     }
 
     playInColumn(columnIdx) {
@@ -21,6 +29,7 @@ class Game {
 
         column.add(this.currentPlayer);
         column.getTokenAt(rowNumber, null)
+        console.log(this.columns);
 
         if(this.currentPlayer === 2) {
             this.currentPlayer = 1;

@@ -29,7 +29,25 @@ function updateUI(event) {
     // document.getElementById(event.target.id).innerHTML = "<div class='token red'></div>";
     // document.getElementById(event.target.id).innerHTML = "";
   }
+  for (let row = 0; row < 6; row++) {
+      for (let column = 0; column < 7; column++) {
+          let square = document.getElementById(`square-${row}-${column}`);
+          let result = game.getTokenAt(row, column);
+         square.innerHTML = '';
+         if (result === 1) {
+             const token = document.createElement('div');
+             token.classList.add('token');
+             token.classList.add('black');
+             square.appendChild(token);
+         } else if (result === 2) {
+            const token = document.createElement('div');
+            token.classList.add('token');
+            token.classList.add('red');
+            square.appendChild(token);
+         }
 
+      }
+  }
 
 
 }
@@ -62,10 +80,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
   })
   clickTarget.addEventListener('click', event => {
     if (!event.target.id.startsWith('column-')) {
-        return false;
+        return;
     };
-    game.playInColumn();
+    let square = event.target.id;
+    let column = Number.parseInt(square[square.length - 1]);
+    // console.log(event.target.id);
+    // console.log(column);
+
+    game.playInColumn(column);
     updateUI(event);
-    Column.add(game.currentPlayer)
+    // Column.add(game.currentPlayer)
   })
 })
