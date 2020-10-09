@@ -42,6 +42,7 @@ class Game {
         this.checkForTie();
         if( this.winnerNumber === 0) {
             this.checkForColumnWin();
+            this.checkForRowWin();
         }
 
         if(this.currentPlayer === 2) {
@@ -53,6 +54,7 @@ class Game {
         }
 
     }
+
     isColumnFull(columnIdx) {
         if (this.winnerNumber === 1 || this.winnerNumber === 2) {
             return true;
@@ -73,6 +75,24 @@ class Game {
                this.winnerNumber = this.currentPlayer;
            }
         })
+    }
+    checkForRowWin() {
+        let group1 = this.columns.slice(0, 3);
+        let group2 = this.columns.slice(1, 4);
+        let group3 = this.columns.slice(2, 5);
+        let group4 = this.columns.slice(3, 6);
+        let row1 = new RowWinInspector(group1, this.currentPlayer);
+        let row2 = new RowWinInspector(group2, this.currentPlayer);
+        let row3 = new RowWinInspector(group3, this.currentPlayer);
+        let row4 = new RowWinInspector(group4, this.currentPlayer);
+        let array = [row1, row2, row3, row4];
+        for (let row = 0; row < array.length; row++) {
+            let result = array[row].inspect();
+            if (result > 0) {
+                this.winnerNumber = result;
+                break; 
+            }
+        }
     }
 }
 export default Game;
