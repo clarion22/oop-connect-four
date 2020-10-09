@@ -11,7 +11,7 @@ class Column {
       if (this.tokens[i] === null) {
         // document.getElementById(`square-<row>-${this.columns[i]}`)
         //   .innerHTML = "<div class='black'></div > "
-        this.tokens[i] === currentPlayer;
+        this.tokens[i] = currentPlayer;
         break;
       }
     }

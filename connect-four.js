@@ -8,7 +8,7 @@ const board = document.getElementById('board-holder');
 const clickTarget = document.getElementById('click-targets');
 const clickTargetColumns = document.querySelectorAll('click-target');
 
-function updateUI(event) {
+function updateUI() {
     if (!game) {
         board.classList.add('is-invisible');
     }
@@ -83,12 +83,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
         return;
     };
     let square = event.target.id;
-    let column = Number.parseInt(square[square.length - 1]);
+    let columnIdx = Number.parseInt(square[square.length - 1]);
     // console.log(event.target.id);
     // console.log(column);
 
-    game.playInColumn(column);
-    updateUI(event);
+    game.playInColumn(columnIdx);
+    updateUI();
     // Column.add(game.currentPlayer)
+    console.log(game.columns)
   })
 })
