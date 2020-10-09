@@ -49,12 +49,12 @@ function updateUI() {
       }
       for (let i = 0; i <= 2; i++) {
        let column = document.getElementById(`column-${i}`);
-      //  if (isColumnFull(i)) {
-      //    column.classList.add('full');
-      //  } else {
-      //    column.classList.remove('full');
-      //  }
-      console.log(game.isColumnFull(i));
+       if (game.isColumnFull(i)) {
+         column.classList.add('full');
+       } else {
+         column.classList.remove('full');
+       }
+      // console.log(game.isColumnFull(i));
       }
   }
 }
