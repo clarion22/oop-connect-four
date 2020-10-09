@@ -10,7 +10,7 @@ export default class RowWinInspector{
       let column2 = this.columns[i+1]
       let column3 = this.columns[i+2]
       let column4 = this.columns[i+3]
-      console.log(column3);
+      console.log(column4);
 
       for (let j = 5; j >= 0; j--) {
         if (column1.tokens[j] === this.currentplayer &&
