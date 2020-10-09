@@ -47,10 +47,21 @@ function updateUI() {
          }
 
       }
+      for (let i = 0; i <= 2; i++) {
+       let column = document.getElementById(`column-${i}`);
+      //  if (isColumnFull(i)) {
+      //    column.classList.add('full');
+      //  } else {
+      //    column.classList.remove('full');
+      //  }
+      console.log(game.isColumnFull(i));
+      }
   }
-
-
 }
+
+
+  //  console.log(game.columns[columnIdx]);
+
 document.addEventListener('DOMContentLoaded', (event) => {
 
   let newGame = document.getElementById('new-game')

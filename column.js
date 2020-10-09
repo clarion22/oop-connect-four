@@ -22,8 +22,9 @@ class Column {
   }
 
   isFull() { //returns true if it's full
-    let result = this.tokens.every(token => token !== null) //which is a conditional
+    return this.tokens.every(token => token !== null) //which is a conditional
   }
+
 }
 
 export default Column;
