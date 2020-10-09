@@ -89,7 +89,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     game.playInColumn(columnIdx);
     updateUI();
-    // Column.add(game.currentPlayer)
-    console.log(game.columns)
+
   })
 })

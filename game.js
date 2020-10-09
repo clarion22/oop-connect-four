@@ -30,6 +30,7 @@ class Game {
         column.add(this.currentPlayer);
         // column.getTokenAt(rowNumber, null)
         // console.log(this.columns);
+        column.isFull()
 
         if(this.currentPlayer === 2) {
             this.currentPlayer = 1;

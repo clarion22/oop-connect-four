@@ -1,12 +1,12 @@
 import Game from './game.js'
 
 class Column {
-  constructor(){
+  constructor() {
     this.tokens = [null, null, null, null, null, null];
 
   }
 
-  add(currentPlayer){
+  add(currentPlayer) {
     for (let i = 5; i >= 0; i--) {
       if (this.tokens[i] === null) {
         // document.getElementById(`square-<row>-${this.columns[i]}`)
@@ -17,8 +17,12 @@ class Column {
     }
   }
 
-  getTokenAt(rowNumber){
+  getTokenAt(rowNumber) {
     return this.tokens[rowNumber];
+  }
+
+  isFull() { //returns true if it's full
+    let result = this.tokens.every(token => token !== null) //which is a conditional
   }
 }
 
