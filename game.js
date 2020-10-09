@@ -40,10 +40,9 @@ class Game {
 
         column.add(this.currentPlayer);
         this.checkForTie();
-        if( this.winnerNumber === 0) {
-            this.checkForColumnWin();
-            this.checkForRowWin();
-        }
+        this.checkForColumnWin();
+        this.checkForRowWin();
+
 
         if(this.currentPlayer === 2) {
             this.currentPlayer = 1;
@@ -77,20 +76,22 @@ class Game {
         })
     }
     checkForRowWin() {
-        let group1 = this.columns.slice(0, 3);
-        let group2 = this.columns.slice(1, 4);
-        let group3 = this.columns.slice(2, 5);
-        let group4 = this.columns.slice(3, 6);
-        let row1 = new RowWinInspector(group1, this.currentPlayer);
-        let row2 = new RowWinInspector(group2, this.currentPlayer);
-        let row3 = new RowWinInspector(group3, this.currentPlayer);
-        let row4 = new RowWinInspector(group4, this.currentPlayer);
+        if (this.winnerNumber !== 0) return;
+        let group1 = this.columns.slice(0, 4);
+        let group2 = this.columns.slice(1, 5);
+        let group3 = this.columns.slice(2, 6);
+        let group4 = this.columns.slice(3);
+        let row1 = new RowWinInspector(group1);
+        let row2 = new RowWinInspector(group2);
+        let row3 = new RowWinInspector(group3);
+        let row4 = new RowWinInspector(group4);
         let array = [row1, row2, row3, row4];
+        console.log(row1)
         for (let row = 0; row < array.length; row++) {
             let result = array[row].inspect();
-            if (result > 0) {
+            if (result ===1 || result === 2) {
                 this.winnerNumber = result;
-                break; 
+                break;
             }
         }
     }
