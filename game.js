@@ -1,6 +1,7 @@
 import Column from "./column.js";
 import ColumnWinInspector from "./column-win-inspector.js";
-import RowWinInspector from "./row-win-inspector.js"
+import RowWinInspector from "./row-win-inspector.js";
+import DiagonalWinInspector from './diagonal-win-inspector.js';
 
 class Game {
     constructor(name1, name2) {
@@ -42,6 +43,7 @@ class Game {
         this.checkForTie();
         this.checkForColumnWin();
         this.checkForRowWin();
+        this.checkForDiagonalWin();
 
 
         if(this.currentPlayer === 2) {
@@ -85,6 +87,26 @@ class Game {
         let row2 = new RowWinInspector(group2);
         let row3 = new RowWinInspector(group3);
         let row4 = new RowWinInspector(group4);
+        let array = [row1, row2, row3, row4];
+        console.log(row1)
+        for (let row = 0; row < array.length; row++) {
+            let result = array[row].inspect();
+            if (result ===1 || result === 2) {
+                this.winnerNumber = result;
+                break;
+            }
+        }
+    }
+    checkForDiagonalWin() {
+        if (this.winnerNumber !== 0) return;
+        let group1 = this.columns.slice(0, 4);
+        let group2 = this.columns.slice(1, 5);
+        let group3 = this.columns.slice(2, 6);
+        let group4 = this.columns.slice(3);
+        let row1 = new DiagonalWinInspector(group1);
+        let row2 = new DiagonalWinInspector(group2);
+        let row3 = new DiagonalWinInspector(group3);
+        let row4 = new DiagonalWinInspector(group4);
         let array = [row1, row2, row3, row4];
         console.log(row1)
         for (let row = 0; row < array.length; row++) {
